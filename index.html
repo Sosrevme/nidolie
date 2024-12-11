@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="shortcut icon" href="imagens/index/favicon1.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <title>Nidolie - Página Inicial</title>
+</head>
+
+<body>
+
+ <!-- LOGIN CADASTRO -->
+ <div id="loginPopup" class="popup">
+    <div class="popup-content">
+      <span class="close">&times;</span>
+      <h2>Inciar sessão</h2>
+      <p>Inicie a sessão e acompanhe seus pedidos</p>
+      <form id="loginForm">
+        <label for="emailCpf">Email ou CPF</label>
+        <input type="text" id="emailCpf" name="emailCpf" placeholder="Informe seu email ou CPF" required>
+
+        <label for="password">Senha</label>
+        <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+        <a href="recuperar-senha.html" class="forgot-password">Esqueceu a senha?</a>
+
+        <div class="buttons-acesso">
+          <button type="button" id="signupBtn" onclick="window.location.href='minhaconta.html';">Cadastre-se</button>
+          <button type="submit" id="loginBtn">Entrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  
+  <div id="loadingPopup" class="popup">
+    <div class="loading-content">
+      <div class="spinner"></div>
+      <p>Carregando...</p>
+    </div>
+  </div>
+  <script>document.addEventListener("DOMContentLoaded", () => {
+    const myAccountBtn = document.getElementById("myAccountBtn");
+    const loginPopup = document.getElementById("loginPopup");
+    const closeBtn = document.querySelector(".close");
+    const loginForm = document.getElementById("loginForm");
+    const loadingPopup = document.getElementById("loadingPopup");
+  
+    myAccountBtn.addEventListener("click", () => {
+      loginPopup.style.display = "flex";
+    });
+  
+    closeBtn.addEventListener("click", () => {
+      loginPopup.style.display = "none";
+    });
+  
+    window.addEventListener("click", (event) => {
+      if (event.target === loginPopup) {
+        loginPopup.style.display = "none";
+      }
+    });
+  
+    loginForm.addEventListener("submit", (event) => {
+      event.preventDefault(); 
+      loginPopup.style.display = "none"; 
+      loadingPopup.style.display = "flex"; 
+  
+      setTimeout(() => {
+        loadingPopup.style.display = "none"; 
+        alert("Bem-vindo à sua conta!"); 
+      }, 2000);
+    });
+  });
+  </script>
+
+
+
+
+
+
+
+
+
+
+    <script src="script.js"></script>
+    <header>
+        <!-- ----- MENSAGEM DESCONTO TOPO ----- -->
+        <div class="mensagem-desconto">
+            Compre agora e <span>ganhe 10% OFF</span> em sua primeira compra!
+        </div>
+
+
+        <!-- ----- ÍCONES CABEÇALHO ----- -->
+        <div class="icones-cabecalho">
+            <div class="caixa-busca">
+                <input type="text" placeholder="Buscar...">
+                <button>
+                    <i data-feather="search"></i> 
+                </button>
+            </div>
+            <div class="icone-cabecalho">
+            
+
+             
+                    <button id="myAccountBtn"> <i data-feather="user"></i></button> 
+                
+                <a href="carrinho.html" class="icone">
+                    <i data-feather="shopping-cart"></i> 
+                </a>
+            </div>
+        </div>
+
+        <script>
+            feather.replace(); 
+        </script>
+
+
+        <!-- LOGOTIPO CABEÇALHO -->
+        <a href="index.html"><img class="logotipo" src="imagens/index/logo/logotipo12.png" alt="Logotipo Nidolie"></a>
+
+
+        <!-- MENU -->
+
+        <nav>
+            <ul class="menu-principal">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="paginaemconstrucao.html">Produtos</a>
+                    <ul class="submenu-categoria">
+                        <li>
+                            <a href="paginaemconstrucao.html">Decoração</a>
+                            <ul class="submenu-produto">
+                                <li><a href="paginaemconstrucao.html">Mantas</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="paginaemconstrucao.html">Acessórios</a>
+                            <ul class="submenu-produto">
+                                <li><a href="paginaemconstrucao.html">Bolsas</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="personagens.html">Amigurumis</a>
+                            <ul class="submenu-produto">
+                                <li><a href="personagens.html">Personagens</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="personalizados.html">Personalizados</a></li>
+                <li><a href="sobrenos.html">Sobre Nós</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+
+
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide fade">
+                    <img src="imagens/index/slide3.png" alt="Promoção slide 1">
+
+                </div>
+
+                <div class="slide fade">
+                    <img src="imagens/index/slide2.png" alt="Promoção slide 2">
+
+                </div>
+
+                <div class="slide fade">
+                    <img src="imagens/index/slide1.png" alt="Promoção slide 3">
+                </div>
+
+            </div>
+
+
+
+            <div class="dots-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+    </header>
+
+
+
+
+    <main class="container">
+        <section class="boas-vindas">
+            <div class="text-boas-vindas">
+                <h1> Bem-vindo à Nidolie!</h1>
+                <p>Aqui, cada ponto de crochê é feito com carinho, transformando fios em afeto. Em nossa loja, você
+                    encontrará peças exclusivas, criadas para aquecer o seu coração e trazer um toque de aconchego para
+                    o seu lar. Cada produto carrega a essência do feito à mão, trazendo não apenas beleza, mas também
+                    conforto e carinho em cada detalhe.</p>
+
+                <p>Acreditamos que a arte do crochê é uma forma única de expressar sentimentos e conexões. Em nossa
+                    coleção, você vai descobrir desde itens decorativos até presentes especiais, todos feitos com
+                    dedicação e amor. Fique à vontade para explorar, se encantar e encontrar algo que toque seu coração.
+                    Estamos felizes em ter você por aqui!</p>
+            </div>
+        </section>
+
+
+        <section class="produtos-catalogo">
+            <h2>Peças que encantam</h2>
+            <h3>Explore nosso catálogo</h3>
+
+            <div class="lista-produtos">
+            
+                <div class="item-produto">
+                    <img src="imagens/index/acessorios.png" alt="Bolsa de crochê amarela">
+                    <h4>Acessórios</h4>
+                    <p>Peças de crochê para transformar cada detalhe. Adicione estilo e carinho ao seu lar. </p>
+                    <button onclick="window.location.href='paginaemconstrucao.html';">Conheça Mais</button>
+                </div>
+
+                <div class="item-produto">
+                    <img src="imagens/index/decoracao.png"
+                        alt="Manta de Crochê branca sobre uma cadeira de trançada marrom.">
+                    <h4>Decoração</h4>
+                    <p>Envolva-se em aconchego com nossas mantas feitas à mão, perfeitas para os momentos de
+                        relaxamento. </p>
+                    <button onclick="window.location.href='paginaemconstrucao.html';">Conheça Mais</button>
+                </div>
+
+                <div class="item-produto">
+                    <img src="imagens/index/amigurumis.png" alt="Urso de amigurumi marrom, com macacão azul claro.">
+
+                    <h4>Amigurumis</h4></a>
+                    <p>Feitos com carinho, os amigurumis proporcionam momentos de diversão e alegria, despertando a
+                        imaginação das crianças e o afetos dos adultos. </p>
+                    <button onclick="window.location.href='personagens.html';">Conheça Mais</button>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+        <section class="produtos-personalizados">
+
+            <div class="texto-personalizados">
+                <div class="text-button">
+                    <h2>Peças únicas para você!</h2>
+                    <h3>Detalhes feitos especialmente para você</h3>
+                    <p>Na Nidolie, acreditamos que cada peça deve refletir a personalidade e o estilo de quem a utiliza.
+                        Por isso, oferecemos a opção de personalização, para que você tenha algo verdadeiramente
+                        exclusivo, feito sob medida para você.</p>
+
+                    <p>Seja um presente especial, um detalhe decorativo para seu lar ou uma peça que simbolize um
+                        momento único da sua vida, nós transformamos sua ideia em realidade com o cuidado e a dedicação
+                        que só o crochê artesanal pode oferecer. Você escolhe as cores, os detalhes, e o formato, e
+                        nossa equipe criativa coloca todo o seu carinho em cada ponto.</p>
+
+                    <p> Deixe-nos criar algo que seja a sua cara! Entre em contato conosco!</p>
+                    <button onclick="window.location.href='personalizados.html';">PERSONALIZE O SEU!</button>
+                </div>
+            </div>
+            <div class="imagem-personalizado">
+
+                <img src="imagens/index/personalize.jpg" alt="Confecção de roupas feitas de crochê">
+            </div>
+            <div class="cor-personalizado"></div>
+        </section>
+ 
+
+
+
+        <section class="historia-nidolie">
+
+            <div class="texto-historia">
+            </div>
+            <div class="imagem-historia">
+                <img src="imagens/index/autors.jpg" alt="Criadoras da Nidolie, duas garotas vestidas de preto sorrindo">
+            </div>
+            <div class="cor-historia">
+                <div class="text-button-historia">
+                    <h2>Nossa História</h2>
+                    <h3>Como a Nidolie Surgiu?</h3>
+                    <p>A história da Nidolie é marcada pelo carinho, pela conexão e pela arte que une pessoas. Criada
+                        por duas irmãs, Veridiana e Verônica, a marca tem suas raízes fincadas na infância das duas.
+                        Durante as férias na casa da tia, aprenderam os primeiros pontos e se encantaram com as
+                        infinitas possibilidades de transformar fios em peças únicas.</p>
+                    <button onclick="window.location.href='sobrenos.html';">CONTINUE LENDO...</button>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="produtos-mais-vendidos">
+            <h2>Favoritos da Nidolie</h2>
+            <h3>Os mais queridos por nossos clientes</h3>
+
+
+            <div class="carrossel-container">
+
+                <div class="carrossel">
+
+
+                    <div class="item-vendido">
+                        <img src="imagens/produtos/acessorios/bolsas/bolsaverde.png"
+                            alt="Bolsa de crochê verde com alças">
+                            <a href="paginaemconstrucao.html"><h4>Bolsa Verde</h4></a>
+                            <p>R$ 120,00</p>
+                        <button class="add-to-cart" onclick="addToCart('Bolsa Verde', 120, 'imagens/produtos/acessorios/bolsas/bolsaverde.png')">Adicionar ao Carrinho</button>
+                        <button class="buy-now" onclick="addToCartAndRedirect('Bolsa Verde', 120, 'imagens/produtos/acessorios/bolsas/bolsaverde.png')">Comprar</button>
+
+                    </div>
+
+
+                    <div class="item-vendido">
+                        <img src="imagens/produtos/acessorios/bolsas/bolsaquadriculada.png"
+                            alt="Bolsa de crochê quadriculada, laranja, amarela e marrom">
+                            <a href="paginaemconstrucao.html"><h4>Bolsa Quadriculada</h4></a>
+                            <p>R$ 140,00</p>
+                        <button class="add-to-cart" onclick="addToCart('Bolsa Quadriculada', 140, 'imagens/produtos/acessorios/bolsas/bolsaquadriculada.png')">Adicionar ao Carrinho</button>
+                        <button class="buy-now" onclick="addToCartAndRedirect('Bolsa Quadriculada', 140, 'imagens/produtos/acessorios/bolsas/bolsaquadriculada.png')">Comprar</button>
+
+                    </div>
+
+
+                    <div class="item-vendido">
+                        <img src="imagens/produtos/amigurumi/personagens/1-amigurumi-coelho.png"
+                            alt="Amigurumi de coelho em tons neutros">
+                            <a href="amigurumicoelho.html"><h4>Amigurumi Coelho Fofo</h4></a>
+                            <p>R$ 90,00</p>
+                        <button class="add-to-cart" onclick="addToCart('Amigurumi Coelho Fofo', 90, 'imagens/produtos/amigurumi/personagens/1-coelho1.png')">Adicionar ao Carrinho</button>
+                        <button class="buy-now" onclick="addToCartAndRedirect('Amigurumi Coelho Fofo', 90, 'imagens/produtos/amigurumi/personagens/1-coelho1.png')">Comprar</button>
+
+                    </div>
+
+
+                    <div class="item-vendido">
+                        <img src="imagens/produtos/amigurumi/personagens/1-girafa.png"
+                            alt="Amigurumi de Girafa amarela com pompom no pescoço">
+                            <a href="amigurumigirafa.html"><h4>Amigurumi Girafinha</h4></a>
+                        <p>R$ 100,00</p>
+                        <button class="add-to-cart" onclick="addToCart('Amigurumi Girafinha', 100, 'imagens/produtos/amigurumi/personagens/1-girafa.png')">Adicionar ao Carrinho</button>
+                        <button class="buy-now" onclick="addToCartAndRedirect('Amigurumi Girafinha', 100, 'imagens/produtos/amigurumi/personagens/1-girafa.png')">Comprar</button>
+
+                    </div>
+
+
+                    <div class="item-vendido">
+                        <img src="imagens/produtos/decoracao/mantas/1-mantabranca.png"
+                            alt="Manta branca feita de crochê">
+                            <a href="paginaemconstrucao.html"><h4>Manta Branca</h4></a>
+                        <p>R$ 200,00</p>
+                        <button class="add-to-cart" onclick="addToCart('Manta Branca', 200, 'imagens/produtos/decoracao/mantas/1-mantabranca.png')">Adicionar ao Carrinho</button>
+                        <button class="buy-now" onclick="addToCartAndRedirect('Manta Branca', 200, 'imagens/produtos/decoracao/mantas/1-mantabranca.png')">Comprar</button>
+
+                    </div>
+
+
+                    <div class="item-vendido">
+                        <img src="imagens/produtos/acessorios/bolsas/1-bolsaamarela.png" alt="Bolsa de crochê amarela">
+                        <a href="paginaemconstrucao.html"><h4>Bolsa Amarela</h4></a>
+                        <p>R$ 120,00</p>
+                        <button class="add-to-cart" onclick="addToCart('Bolsa Amarela', 120, 'imagens/produtos/acessorios/bolsas/1-bolsaamarela.png')">Adicionar ao Carrinho</button>
+                        <button class="buy-now" onclick="addToCartAndRedirect('Bolsa Amarela', 120, 'imagens/produtos/acessorios/bolsas/1-bolsaamarela.png')">Comprar</button>
+
+                    </div>
+
+
+        
+
+
+                    <div class="item-vendido">
+                        <img src="imagens/produtos/amigurumi/personagens/1-urso.png"
+                            alt="Urso de amigurumi marrom com macacão azul">
+                            <a href="amigurumiurso.html"><h4>Amigurumi Urso com macacão</h4></a>
+                            <p>R$ 95,00</p>
+                        <button class="add-to-cart" onclick="addToCart('Amigurumi Urso com macacão', 95, 'imagens/produtos/amigurumi/personagens/1-urso.png')">Adicionar ao Carrinho</button>
+                        <button class="buy-now" onclick="addToCartAndRedirect('Amigurumi Urso com macacão', 95, 'imagens/produtos/amigurumi/personagens/1-urso.png')">Comprar</button>
+                    </div>
+                </div>
+                <button class="nav-button prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="nav-button next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+            </div>
+
+        </section>
+
+        <section class="depoimentos-container">
+            <h2>O que nossos clientes dizem</h2>
+            <h3>Veja o que nossos clientes têm a dizer sobre nossos produtos e serviços</h3>
+
+
+            <div class="depoimentos-lista">
+
+
+                <div class="depoimento">
+                    <img src="imagens/clientes/cliente-mariasilva.png" alt="Depoimento do cliente">
+                    <p>"Excelente qualidade e atendimento!"</p>
+                    <p class="cliente">Maria Silva</p>
+                </div>
+                <div class="depoimento">
+                    <img src="imagens/clientes/cliente-analucia.png" alt="Depoimento do cliente">
+                    <p>"Produtos lindos e únicos, adorei!"</p>
+                    <p class="cliente">Ana Lúcia</p>
+                </div>
+                <div class="depoimento">
+                    <img src="imagens/clientes/cliente-claudiatorres.png" alt="Depoimento do cliente">
+                    <p>"Super recomendo! Trabalho incrível."</p>
+                    <p class="cliente">Cláudia Torres</p>
+                </div>
+
+
+            </div>
+        </section>
+
+
+        <section class="mensagens-envio">
+            <div class="mensagem">
+                <h5>Feito com carinho </h5>
+                <p>Cada peça é única, feita à mão com amor e atenção aos detalhes. Perfeita para você ou para
+                    presentear!</p>
+
+            </div>
+            <div class="mensagem">
+                <h5>Entrega em todo o Brasil </h5>
+                <p>Entregamos em todo o Brasil com agilidade e segurança. Consulte os prazos e receba sua peça!</p>
+
+            </div>
+            <div class="mensagem">
+                <h5>Atendimento acolhedor</h5>
+                <p>Estamos aqui para te ajudar! Fale com a gente pelo WhatsApp ou e-mail sempre que precisar.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>// Função para adicionar produtos ao carrinho e redirecionar para a página do carrinho
+        function addToCartAndRedirect(name, price, image) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.name === name);
+        
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name, price, image, quantity: 1 });
+            }
+        
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${name} foi adicionado ao carrinho!`);
+        
+            // Redireciona para a página do carrinho
+            window.location.href = 'carrinho.html'; 
+        }
+        </script>
+    <script>
+        // Função para adicionar produtos ao carrinho
+        function addToCart(name, price, image) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name, price, image, quantity: 1 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${name} foi adicionado ao carrinho!`);
+        }
+    </script>
+
+</section>
+
+
+
+<footer>
+    <div class="rodape-info">
+        <h3>A Nidolie</h3>
+        <a href="sobrenos.html">Sobre Nós</a>
+        <a href="contato.html">Fale Conosco</a>
+    </div>
+    <div class="rodape-info">
+        <h3>Consumidor</h3>
+        <a href="minhaconta.html">Minha Conta</a>
+        <a href="termosecondicoes.html">Termos e Condições</a>
+        <a href="politicadeprivacidade.html">Política de Privacidade</a>
+        <a href="contato.html">Dúvidas Frequentes</a>
+    </div>
+    <div class="rodape-info">
+        <h3>Contato</h3>
+        <a href="https://web.whatsapp.com/send?phone=5511982526747">(11) 98252.6747</a>
+        <a href="mailto:nnidolie@gmail.com">nnidolie@gmail.com</a>
+        <p>Segunda à Sexta, das 8:00 às 17hs</p>
+    </div>
+    <div class="rodape-info">
+        <h3>Siga a Nidolie</h3>
+        <div class="social-icons">
+            <a href="https://br.pinterest.com/nidolie/"><i class="fab fa-pinterest"></i></a>
+            <a href="https://www.instagram.com/nido.lie/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@Nidolie"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@nidolie1"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright © 2024 Nidolie. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="shortcut icon" href="imagens/index/favicon1.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Nidolie - Personagens</title>
+</head>
+
+<body>
+
+   
+    
+ <!-- LOGIN CADASTRO -->
+ <div id="loginPopup" class="popup">
+    
+    <div class="popup-content">
+      <span class="close">&times;</span>
+      
+      <h2>Inciar sessão</h2>
+      <p>Inicie a sessão e acompanhe seus pedidos</p>
+      <form id="loginForm">
+        <label for="emailCpf">Email ou CPF</label>
+        <input type="text" id="emailCpf" name="emailCpf" placeholder="Informe seu email ou CPF" required>
+
+        <label for="password">Senha</label>
+        <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+        <a href="recuperar-senha.html" class="forgot-password">Esqueceu a senha?</a>
+
+        <div class="buttons-acesso">
+          <button type="button" id="signupBtn" onclick="window.location.href='minhaconta.html';">Cadastre-se</button>
+          <button type="submit" id="loginBtn">Entrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  
+  <div id="loadingPopup" class="popup">
+    <div class="loading-content">
+      <div class="spinner"></div>
+      <p>Carregando...</p>
+    </div>
+  </div>
+  <script>document.addEventListener("DOMContentLoaded", () => {
+    const myAccountBtn = document.getElementById("myAccountBtn");
+    const loginPopup = document.getElementById("loginPopup");
+    const closeBtn = document.querySelector(".close");
+    const loginForm = document.getElementById("loginForm");
+    const loadingPopup = document.getElementById("loadingPopup");
+  
+    myAccountBtn.addEventListener("click", () => {
+      loginPopup.style.display = "flex";
+    });
+  
+    closeBtn.addEventListener("click", () => {
+      loginPopup.style.display = "none";
+    });
+  
+    window.addEventListener("click", (event) => {
+      if (event.target === loginPopup) {
+        loginPopup.style.display = "none";
+      }
+    });
+  
+    loginForm.addEventListener("submit", (event) => {
+      event.preventDefault(); 
+      loginPopup.style.display = "none"; 
+      loadingPopup.style.display = "flex"; 
+  
+      setTimeout(() => {
+        loadingPopup.style.display = "none"; 
+        alert("Bem-vindo à sua conta!"); 
+      }, 2000);
+    });
+  });
+  </script>
+
+
+    <script src="script.js"></script>
+    <header>
+
+      <!-- ----- ÍCONES CABEÇALHO ----- -->
+      <div class="icones-cabecalho">
+        <div class="caixa-busca">
+            <input type="text" placeholder="Buscar...">
+            <button>
+                <i data-feather="search"></i> 
+            </button>
+        </div>
+        <div class="icone-cabecalho">
+        
+
+         
+                <button id="myAccountBtn"> <i data-feather="user"></i></button> 
+            
+            <a href="carrinho.html" class="icone">
+                <i data-feather="shopping-cart"></i> 
+            </a>
+        </div>
+    </div>
+
+        <!-- ICONES CABEÇALHO ATIVAÇÃO -->
+        <script>
+            feather.replace(); // Ativa os ícones Feather
+        </script>
+
+        <!-- LOGOTIPO CABEÇALHO -->
+        <a href="index.html"><img class="logotipo" src="imagens/index/logo/logotipo12.png" alt="Logotipo Nidolie"></a>
+
+
+        <!-- MENU -->
+        
+        <nav>
+            <ul class="menu-principal">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="paginaemconstrucao.html">Produtos</a>
+                    <ul class="submenu-categoria">
+                        <li>
+                            <a href="paginaemconstrucao.html">Decoração</a>
+                            <ul class="submenu-produto">
+                                <li><a href="paginaemconstrucao.html">Mantas</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="paginaemconstrucao.html">Acessórios</a>
+                            <ul class="submenu-produto">
+                                <li><a href="paginaemconstrucao.html">Bolsas</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="personagens.html">Amigurumis</a>
+                            <ul class="submenu-produto">
+                                <li><a href="personagens.html">Personagens</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="personalizados.html">Personalizados</a></li>
+                <li><a href="sobrenos.html">Sobre Nós</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+                <li class="breadcrumb-item"><a href="termosecondicoes.html">Termos e Condições</a></li>
+            </ol>
+        </nav>
+        <section class="termosecondicoes">
+       
+           
+            <div class="texto-termos">
+                <h1>Termos e Condições</h1>
+                <h2>Atualizado em Dezembro de 2024</h2>
+             
+                
+                <ol>
+                    <!-- Seção 1 -->
+                    <li>
+                        <h3>Informações Gerais</h3>
+                        <ol>
+                            <li>Este site é operado pela Nidolie, uma loja especializada em crochê afetivo com produtos feitos à mão.</li>
+                            <li>Reservamo-nos o direito de alterar, modificar ou atualizar os Termos e Condições a qualquer momento. Qualquer alteração será válida a partir de sua publicação no site.</li>
+                        </ol>
+                    </li>
+            
+                    <!-- Seção 2 -->
+                    <li>
+                        <h3>Produtos</h3>
+                        <ol>
+                            <li>Produtos Prontos: São peças disponíveis em nosso catálogo, já confeccionadas e prontas para envio.</li>
+                            <li>Produtos Personalizados: São feitos sob medida, de acordo com as especificações fornecidas pelo cliente (cores, tamanhos, detalhes, etc.).</li>
+                            <li>Todos os produtos são confeccionados manualmente, podendo apresentar pequenas variações em relação às fotos exibidas no site.</li>
+                        </ol>
+                    </li>
+            
+                    <!-- Seção 3 -->
+                    <li>
+                        <h3>Pedidos</h3>
+                        <ol>
+                            <li>Para realizar um pedido, é necessário fornecer informações precisas e completas.</li>
+                            <li>No caso de produtos personalizados, o cliente deve revisar e aprovar as especificações antes do início da produção.</li>
+                            <li>Após a confirmação do pedido e do pagamento, não será possível realizar alterações no produto.</li>
+                        </ol>
+                    </li>
+            
+                    <!-- Seção 4 -->
+                    <li>
+                        <h3>Pagamentos</h3>
+                        <ol>
+                            <li>Aceitamos as seguintes formas de pagamento: cartão de crédito, Pix e boleto bancário.</li>
+                            <li>Os pedidos serão processados somente após a confirmação do pagamento.</li>
+                            <li>Para compras via boleto bancário, o prazo de compensação pode levar até 2 dias úteis.</li>
+                        </ol>
+                    </li>
+            
+                    <!-- Seção 5 -->
+                    <li>
+                        <h3>Prazo de Produção e Entrega</h3>
+                        <ol>
+                            <li>Produtos Prontos: Serão enviados em até 3 dias úteis após a confirmação do pagamento.</li>
+                            <li>Produtos Personalizados: O prazo de produção é de 7 a 15 dias úteis, dependendo da complexidade do pedido.</li>
+                            <li>O prazo de entrega dependerá da sua localização e da modalidade de envio escolhida. Ele será informado no momento da compra.</li>
+                            <li>Não nos responsabilizamos por atrasos causados por problemas nos serviços dos Correios ou transportadoras.</li>
+                        </ol>
+                    </li>
+            
+                    <!-- Seção 6 -->
+                    <li>
+                        <h3>Trocas e Devoluções</h3>
+                        <ol>
+                            <li>Produtos Prontos: Aceitamos trocas ou devoluções em até 7 dias corridos após o recebimento, desde que o produto não tenha sido utilizado e esteja em sua embalagem original.</li>
+                            <li>Produtos Personalizados: Por se tratarem de peças exclusivas, não aceitamos devoluções ou trocas, exceto em casos de defeito de fabricação.</li>
+                            <li>Para iniciar o processo de troca ou devolução, entre em contato conosco pelo e-mail <a href="mailto:nnidolie@gmail.com">nnidolie@gmail.com</a>, informando o número do pedido e o motivo.</li>
+                        </ol>
+                    </li>
+            
+                    <!-- Seção 7 -->
+                    <li>
+                        <h3>Cancelamento</h3>
+                        <ol>
+                            <li>O cliente pode cancelar um pedido antes do início da produção ou envio.</li>
+                            <li>Após o envio do produto, o cancelamento não será mais possível.</li>
+                        </ol>
+                    </li>
+            
+                    <!-- Seção 8 -->
+                    <li>
+                        <h3>Garantia</h3>
+                        <ol>
+                            <li>Garantimos a qualidade dos materiais e da confecção de nossos produtos.</li>
+                            <li>Caso identifique algum problema com sua peça, entre em contato conosco em até 7 dias corridos após o recebimento.</li>
+                        </ol>
+                    </li>
+            
+                    <!-- Seção 9 -->
+                    <li>
+                        <h3>Privacidade</h3>
+                        <ol>
+                            <li>Respeitamos sua privacidade e garantimos que suas informações pessoais não serão compartilhadas com terceiros, exceto quando necessário para o processamento de pedidos (ex.: transportadoras).</li>
+                            <li>Para mais informações, consulte nossa <a href="politicadeprivacidade.html">Política de Privacidade</a>.</li>
+                        </ol>
+                    </li>
+            
+                    <!-- Seção 10 -->
+                    <li>
+                        <h3>Propriedade Intelectual</h3>
+                        <ol>
+                            <li>Todo o conteúdo deste site, incluindo imagens, textos, logotipos e designs, é de propriedade exclusiva da Nidolie.</li>
+                            <li>É proibida a reprodução, distribuição ou uso não autorizado de qualquer conteúdo do site.</li>
+                        </ol>
+                    </li>
+            
+                    <!-- Seção 11 -->
+                    <li>
+                        <h3>Contato</h3>
+                        <p>Se tiver dúvidas sobre nossos Termos e Condições, entre em contato conosco:</p>
+                        <ul>
+                            <li> <a href="mailto:nnidolie@gmail.com">nnidolie@gmail.com</a></li>
+                            <li>(11) 98252-6747</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </section>
+       </main>
+
+
+    
+        <footer>
+            <div class="rodape-info">
+                <h3>A Nidolie</h3>
+                <a href="sobrenos.html">Sobre Nós</a>
+                <a href="contato.html">Fale Conosco</a>
+            </div>
+            <div class="rodape-info">
+                <h3>Consumidor</h3>
+                <a href="minhaconta.html">Minha Conta</a>
+                <a href="termosecondicoes.html">Termos e Condições</a>
+                <a href="politicadeprivacidade.html">Política de Privacidade</a>
+                <a href="contato.html">Dúvidas Frequentes</a>
+            </div>
+            <div class="rodape-info">
+                <h3>Contato</h3>
+                <a href="https://web.whatsapp.com/send?phone=5511982526747">(11) 98252.6747</a>
+                <a href="mailto:nnidolie@gmail.com">nnidolie@gmail.com</a>
+                <p>Segunda à Sexta, das 8:00 às 17hs</p>
+            </div>
+            <div class="rodape-info">
+                <h3>Siga a Nidolie</h3>
+                <div class="social-icons">
+                    <a href="https://br.pinterest.com/nidolie/"><i class="fab fa-pinterest"></i></a>
+                    <a href="https://www.instagram.com/nido.lie/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@Nidolie"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@nidolie1"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            </div>
+            <div class="copyright">
+                <p>Copyright © 2024 Nidolie. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+
+</body>
+
+</html>

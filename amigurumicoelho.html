@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="shortcut icon" href="imagens/index/favicon1.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Nidolie - Amigurumi Coelho Fofo</title>
+</head>
+
+<body>
+
+
+    
+ <!-- LOGIN CADASTRO -->
+ <div id="loginPopup" class="popup">
+    <div class="popup-content">
+      <span class="close">&times;</span>
+      <h2>Inciar sessão</h2>
+      <p>Inicie a sessão e acompanhe seus pedidos</p>
+      <form id="loginForm">
+        <label for="emailCpf">Email ou CPF</label>
+        <input type="text" id="emailCpf" name="emailCpf" placeholder="Informe seu email ou CPF" required>
+
+        <label for="password">Senha</label>
+        <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+        <a href="recuperar-senha.html" class="forgot-password">Esqueceu a senha?</a>
+
+        <div class="buttons-acesso">
+          <button type="button" id="signupBtn" onclick="window.location.href='minhaconta.html';">Cadastre-se</button>
+          <button type="submit" id="loginBtn">Entrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  
+  <div id="loadingPopup" class="popup">
+    <div class="loading-content">
+      <div class="spinner"></div>
+      <p>Carregando...</p>
+    </div>
+  </div>
+  <script>document.addEventListener("DOMContentLoaded", () => {
+    const myAccountBtn = document.getElementById("myAccountBtn");
+    const loginPopup = document.getElementById("loginPopup");
+    const closeBtn = document.querySelector(".close");
+    const loginForm = document.getElementById("loginForm");
+    const loadingPopup = document.getElementById("loadingPopup");
+  
+    myAccountBtn.addEventListener("click", () => {
+      loginPopup.style.display = "flex";
+    });
+  
+    closeBtn.addEventListener("click", () => {
+      loginPopup.style.display = "none";
+    });
+  
+    window.addEventListener("click", (event) => {
+      if (event.target === loginPopup) {
+        loginPopup.style.display = "none";
+      }
+    });
+  
+    loginForm.addEventListener("submit", (event) => {
+      event.preventDefault(); 
+      loginPopup.style.display = "none"; 
+      loadingPopup.style.display = "flex"; 
+  
+      setTimeout(() => {
+        loadingPopup.style.display = "none"; 
+        alert("Bem-vindo à sua conta!"); 
+      }, 2000);
+    });
+  });
+  </script>
+
+
+    <script src="script.js"></script>
+    <header>
+
+      <!-- ----- ÍCONES CABEÇALHO ----- -->
+      <div class="icones-cabecalho">
+        <div class="caixa-busca">
+            <input type="text" placeholder="Buscar...">
+            <button>
+                <i data-feather="search"></i> 
+            </button>
+        </div>
+        <div class="icone-cabecalho">
+        
+
+         
+                <button id="myAccountBtn"> <i data-feather="user"></i></button> 
+            
+            <a href="carrinho.html" class="icone">
+                <i data-feather="shopping-cart"></i> 
+            </a>
+        </div>
+    </div>
+
+        <!-- ICONES CABEÇALHO ATIVAÇÃO -->
+        <script>
+            feather.replace(); // Ativa os ícones Feather
+        </script>
+
+        <!-- LOGOTIPO CABEÇALHO -->
+        <a href="index.html"><img class="logotipo" src="imagens/index/logo/logotipo12.png" alt="Logotipo Nidolie"></a>
+
+
+        <!-- MENU -->
+       
+        <nav>
+            <ul class="menu-principal">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="paginaemconstrucao.html">Produtos</a>
+                    <ul class="submenu-categoria">
+                        <li>
+                            <a href="paginaemconstrucao.html">Decoração</a>
+                            <ul class="submenu-produto">
+                                <li><a href="paginaemconstrucao.html">Mantas</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="paginaemconstrucao.html">Acessórios</a>
+                            <ul class="submenu-produto">
+                                <li><a href="paginaemconstrucao.html">Bolsas</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="personagens.html">Amigurumis</a>
+                            <ul class="submenu-produto">
+                                <li><a href="personagens.html">Personagens</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="personalizados.html">Personalizados</a></li>
+                <li><a href="sobrenos.html">Sobre Nós</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    
+    
+      
+    <div class="compra-item">
+        <!-- Imagens do Produto -->
+        <div class="secao-imagens">
+            <!-- Miniaturas à esquerda -->
+            <div class="imagens-pequenas">
+                <img src="imagens/produtos/amigurumi/personagens/1-coelho2.png" alt="Imagem 1" onclick="changeMainImage('imagens/produtos/amigurumi/personagens/1-coelho2.png')">
+                <img src="imagens/produtos/amigurumi/personagens/1-coelho3.png" alt="Imagem 2" onclick="changeMainImage('imagens/produtos/amigurumi/personagens/1-coelho3.png')">
+                <img src="imagens/produtos/amigurumi/personagens/1-coelho.png" alt="Imagem 3" onclick="changeMainImage('imagens/produtos/amigurumi/personagens/1-coelho.png')">
+            </div>
+    
+            <!-- Imagem Principal -->
+            <div class="imagem-principal">
+                <img src="imagens/produtos/amigurumi/personagens/1-coelho1.png" alt="Produto" id="mainImage">
+            </div>
+        </div>
+    
+        <!-- Informações do Produto -->
+        <div class="info-produto">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+                    <li class="breadcrumb-item"><a href="paginaemconstrucao.html">Produtos</a></li>
+                    <li class="breadcrumb-item"><a href="personagens.html">Amigurumis</a></li>
+                    <li class="breadcrumb-item"><a href="personagens.html">Personagens</a></li>
+                  
+
+                </ol>
+              </nav>
+            <h1 id="productName">Amigurumi Coelho Fofo</h1>
+            <p id="productPrice">R$ 90,00</p>
+            <p id="installments"><span>3x de R$ 30,00 sem juros</span></p>
+            <p id="installments"><span>3% de desconto</span> pagando com Pix</p>
+
+            <!-- Escolha de cor -->
+            <!-- <label for="colorSelect">Escolha a cor:</label>
+            <select id="colorSelect">
+                <option value="preto">Preto</option>
+                <option value="branco">Branco</option>
+                <option value="vermelho">Vermelho</option>
+            </select> -->
+    
+            <!-- Quantidade -->
+            <div class="quantity-selector">
+                <label for="quantity">Quantidade:</label>
+                <input type="number" id="quantity" name="quantity" value="1" min="1">
+            </div>
+    
+            <!-- Calcular frete -->
+            <div class="shipping">
+                <label for="zipcode">Digite o CEP para calcular o frete:</label>
+                <input type="text" id="zipcode" placeholder="CEP">
+                <button class="botao-calcular" onclick="calculateShipping()">Calcular Frete</button>
+                <button class="botao-comprar"
+                onclick="addToCartAndRedirect('Amigurumi Coelho Fofo', 90, 'imagens/produtos/amigurumi/personagens/1-coelho1.png')">
+                Comprar
+            </button>            </div>
+        </div>
+    </div>
+
+    
+    <!-- Descrição do Produto -->
+    <div class="produto-descricao">
+        <h2>Descrição do Produto</h2>
+        <p>
+            Este coelhinho de amigurumi é a combinação perfeita de fofura e charme! Feito à mão com carinho, ele tem um vestidinho e uma touquinha delicada que adiciona ainda mais graciosidade à peça. Seu corpo macio e os detalhes cuidadosos, como o narizinho bordado e as orelhinhas longas, fazem dele uma verdadeira obra de arte em crochê.</p>
+
+
+            <h2> Características Principais:</h2>
+            <p> <span> Material:</span> 100% algodão, o que garante um toque suave e aconchegante, ideal para quem busca uma peça de qualidade e durabilidade. </p>
+                <p><span>Tamanho:</span> Aproximadamente 25 cm de altura</p>   
+                
+                
+            <h2> Indicações de Uso:</h2>
+            <p>• Perfeito para decoração de quartos infantis, salas de estar ou para adicionar um toque de ternura a qualquer ambiente.</p> 
+                <p> • Ideal como presente de aniversário, chá de bebê ou para colecionadores de amigurumi e itens feitos à mão.</p> 
+                    <p>  • Perfeito para servir de companhia aconchegante durante momentos de leitura ou descanso.</p> 
+       
+
+                        
+            <h2> Cuidados com a Peça:</h2>
+<p>• Lavagem: Lavar à mão com água fria e sabão neutro, para preservar a maciez do algodão.</p> 
+    <p>  • Secagem: Secar à sombra, evitando a exposição direta ao sol para preservar as cores vibrantes.</p> 
+        <p>  • Armazenamento: Guardar em local seco e arejado, longe de umidade, para garantir que a peça mantenha sua forma e maciez ao longo do tempo.</p> 
+            <p> • Manutenção: Evitar o contato com superfícies ásperas ou sujas para preservar o visual delicado do amigurumi.</p>       
+                </div>
+
+
+
+
+
+
+    <script>
+        function addToCartAndRedirect(name, price, image) {
+            const quantityInput = document.getElementById("quantity");
+            const quantity = parseInt(quantityInput.value, 10) || 1;
+
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ name, price, image, quantity });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${name} (${quantity} unidade(s)) foi adicionado ao carrinho!`);
+
+            window.location.href = 'carrinho.html';
+        }
+    </script>
+<script>
+    // Função para trocar a imagem principal
+    function changeMainImage(imageSrc) {
+        document.getElementById("mainImage").src = imageSrc;
+    }
+    
+    // Função para alterar a quantidade de produto
+    function changeQuantity(action) {
+        let quantityElement = document.getElementById("quantity");
+        let quantity = parseInt(quantityElement.textContent);
+    
+        if (action === "increase") {
+            quantity++;
+        } else if (action === "decrease" && quantity > 1) {
+            quantity--;
+        }
+    
+        quantityElement.textContent = quantity;
+    }
+    
+    // Função para calcular o frete (simulação)
+    function calculateShipping() {
+        let zipcode = document.getElementById("zipcode").value;
+        if (zipcode) {
+            alert("Calculando frete para o CEP: " + zipcode);
+        } else {
+            alert("Por favor, insira um CEP válido.");
+        }
+    }
+    </script>
+
+
+
+</section>
+
+
+
+<footer>
+<div class="rodape-info">
+    <h3>A Nidolie</h3>
+    <a href="sobrenos.html">Sobre Nós</a>
+    <a href="contato.html">Fale Conosco</a>
+</div>
+<div class="rodape-info">
+    <h3>Consumidor</h3>
+    <a href="minhaconta.html">Minha Conta</a>
+    <a href="termosecondicoes.html">Termos e Condições</a>
+    <a href="politicadeprivacidade.html">Política de Privacidade</a>
+    <a href="contato.html">Dúvidas Frequentes</a>
+</div>
+<div class="rodape-info">
+    <h3>Contato</h3>
+    <a href="https://web.whatsapp.com/send?phone=5511982526747">(11) 98252.6747</a>
+    <a href="mailto:nnidolie@gmail.com">nnidolie@gmail.com</a>
+    <p>Segunda à Sexta, das 8:00 às 17hs</p>
+</div>
+<div class="rodape-info">
+    <h3>Siga a Nidolie</h3>
+    <div class="social-icons">
+        <a href="https://br.pinterest.com/nidolie/"><i class="fab fa-pinterest"></i></a>
+        <a href="https://www.instagram.com/nido.lie/"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@Nidolie"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@nidolie1"><i class="fab fa-tiktok"></i></a>
+    </div>
+</div>
+</div>
+</div>
+<div class="copyright">
+    <p>Copyright © 2024 Nidolie. Todos os direitos reservados.</p>
+</div>
+</footer>
+
+</body>
+
+</html>

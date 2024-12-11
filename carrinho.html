@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="shortcut icon" href="imagens/index/favicon1.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Nidolie - Meu Carrinho</title>
+</head>
+
+<body>
+    <header>
+        <!-- ÍCONES CABEÇALHO -->
+        <div class="icones-cabecalho">
+            <div class="caixa-busca">
+                <input type="text" placeholder="Buscar...">
+                <button>
+                    <i data-feather="search"></i> <!-- Ícone de busca -->
+                </button>
+            </div>
+            <div class="icone-cabecalho">
+                <a href="minhaconta.html" class="icone">
+                    <i data-feather="user"></i> <!-- Ícone de usuário -->
+                </a>
+                <a href="meucarrinho.html" class="icone">
+                    <i data-feather="shopping-cart"></i> <!-- Ícone de carrinho -->
+                </a>
+            </div>
+        </div>
+        <!-- ICONES CABEÇALHO ATIVAÇÃO -->
+        <script>
+            feather.replace(); // Ativa os ícones Feather
+        </script>
+
+        <!-- LOGOTIPO CABEÇALHO -->
+        <a href="index.html">
+            <img class="logotipo" src="imagens/index/logo/logotipo12.png" alt="Logotipo Nidolie">
+        </a>
+
+        <!-- MENU -->
+       
+        <nav>
+          <ul class="menu-principal">
+              <li><a href="index.html">Início</a></li>
+              <li><a href="paginaemconstrucao.html">Produtos</a>
+                  <ul class="submenu-categoria">
+                      <li>
+                          <a href="paginaemconstrucao.html">Decoração</a>
+                          <ul class="submenu-produto">
+                              <li><a href="paginaemconstrucao.html">Mantas</a></li>
+                          </ul>
+                      </li>
+                      <li>
+                          <a href="paginaemconstrucao.html">Acessórios</a>
+                          <ul class="submenu-produto">
+                              <li><a href="paginaemconstrucao.html">Bolsas</a></li>
+                          </ul>
+                      </li>
+                      <li>
+                          <a href="personagens.html">Amigurumis</a>
+                          <ul class="submenu-produto">
+                              <li><a href="personagens.html">Personagens</a></li>
+                          </ul>
+                      </li>
+                  </ul>
+              </li>
+              <li><a href="personalizados.html">Personalizados</a></li>
+              <li><a href="sobrenos.html">Sobre Nós</a></li>
+              <li><a href="contato.html">Contato</a></li>
+          </ul>
+      </nav>
+      
+    </header>
+
+  
+
+    <div class="container-carrinho">
+        <h1>Carrinho de Compras</h1>
+        <h2>Aqui estão os itens que você adicionou ao seu carrinho. <br>Verifique os detalhes abaixo e, se necessário, faça ajustes antes de finalizar sua compra.</h2>
+    
+        <div class="cart">
+       
+          <div class="cart-left">
+            <!-- <h2>Itens no Carrinho</h2> -->
+            <div id="cart-items">
+              <!-- Produtos adicionados serão exibidos aqui -->
+            </div>
+    
+            <div class="coupon">
+              <input type="text" class="coupon-input" placeholder="Insira o código do cupom">
+              <button class="apply-button">Aplicar</button>
+            </div>
+          </div>
+    
+          <div class="cart-right">
+            <table class="cart-table">
+              <thead>
+                <tr>
+                  <th>Produto</th>
+                  <th>Preço</th>
+                  <th>Quantidade</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="cart-table-body">
+                <!-- Itens do carrinho serão inseridos dinamicamente aqui -->
+              </tbody>
+            </table>
+    
+            <div class="summary">
+              <p>Subtotal: <span id="subtotal">R$ 0,00</span></p>
+              <p><strong>Total do Pedido: <span id="total">R$ 0,00</span></strong></p>
+            </div>
+    
+            <!-- Botões -->
+            <div class="buttons">
+              <button class="checkout-button" onclick="location.href='comprarealizadacomsucesso.html'">Finalizar Pedido</button>
+              <button class="continue-button" onclick="location.href='index.html'">Continuar Comprando</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+    <script>
+        // Carregar e renderizar itens do carrinho
+        function loadCart() {
+          const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+          const cartTableBody = document.getElementById('cart-table-body');
+          const cartItemsContainer = document.getElementById('cart-items');
+          const subtotalElement = document.getElementById('subtotal');
+          const totalElement = document.getElementById('total');
+    
+          let subtotal = 0;
+          cartTableBody.innerHTML = '';
+          cartItemsContainer.innerHTML = '';
+    
+          cartItems.forEach((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            subtotal += itemTotal;
+    
+            // Tabela da direita
+            cartTableBody.innerHTML += `
+              <tr>
+                <td>${item.name}</td>
+                <td>R$ ${item.price.toFixed(2)}</td>
+                <td>
+                  <input type="number" min="1" value="${item.quantity}" 
+                         class="quantity-input" 
+                         onchange="updateQuantity(${index}, this.value)">
+                </td>
+                <td>R$ ${itemTotal.toFixed(2)}</td>
+              </tr>
+            `;
+    
+            // Lista de itens à esquerda
+            cartItemsContainer.innerHTML += `
+              <div class="product-item">
+                <img src="${item.image || 'placeholder.jpg'}" alt="${item.name}" class="product-image">
+                <div class="product-details">
+                  <p class="product-name">${item.name}</p>
+                  <button class="remove-button" onclick="removeItem(${index})">Remover Item</button>
+                </div>
+              </div>
+            `;
+          });
+    
+          subtotalElement.textContent = `R$ ${subtotal.toFixed(2)}`;
+          totalElement.textContent = `R$ ${subtotal.toFixed(2)}`;
+        }
+    
+        // Atualizar quantidade no Local Storage e recarregar carrinho
+        function updateQuantity(index, newQuantity) {
+          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          cart[index].quantity = parseInt(newQuantity);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          loadCart();
+        }
+    
+        // Remover item do carrinho
+        function removeItem(index) {
+          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          cart.splice(index, 1);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          loadCart();
+        }
+    
+        // Inicializar o carrinho
+        loadCart();
+      </script>
+
+    <footer>
+        <div class="rodape-info">
+            <h3>A Nidolie</h3>
+            <a href="sobrenos.html">Sobre Nós</a>
+            <a href="contato.html">Fale Conosco</a>
+        </div>
+        <div class="rodape-info">
+            <h3>Consumidor</h3>
+            <a href="minhaconta.html">Minha Conta</a>
+            <a href="termosecondicoes.html">Termos e Condições</a>
+            <a href="politicadeprivacidade.html">Política de Privacidade</a>
+            <a href="contato.html">Dúvidas Frequentes</a>
+        </div>
+        <div class="rodape-info">
+            <h3>Contato</h3>
+            <a href="https://web.whatsapp.com/send?phone=5511982526747">(11) 98252.6747</a>
+            <a href="mailto:nnidolie@gmail.com">nnidolie@gmail.com</a>
+            <p>Segunda à Sexta, das 8:00 às 17hs</p>
+        </div>
+        <div class="rodape-info">
+            <h3>Siga a Nidolie</h3>
+            <div class="social-icons">
+                <a href="https://br.pinterest.com/nidolie/"><i class="fab fa-pinterest"></i></a>
+                <a href="https://www.instagram.com/nido.lie/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@Nidolie"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@nidolie1"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright © 2024 Nidolie. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
